@@ -1,0 +1,26 @@
+*fern-hijack.txt*	Use fern.vim as a default explorer instead of Netrw
+
+Author:  Alisue <lambdalisue@hashnote.net>
+License: MIT license
+
+=============================================================================
+CONTENTS					*fern-hijack-contents*
+
+INTRODUCTION				|fern-hijack-introduction|
+
+=============================================================================
+INTRODUCTION					*fern-hijack-introduction*
+
+*fern-hijack.vim* (fern-hijack) is a plugin to use fern.vim as a default
+explorer instead of Netrw.
+
+Installing this plugin automatically overwrite the default explorer. To
+disable the feature, write the following code somewhere in your |vimrc|:
+>
+	let g:loaded_fern_hijack = 1
+<
+Or just uninstall the plugin.
+
+
+=============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
