@@ -8,8 +8,9 @@ function! s:hijack_directory() abort
   if !isdirectory(path)
     return
   endif
-  silent bwipeout %
+  let dirbuf = bufnr()
   execute printf('Fern %s', fnameescape(path))
+  silent execute 'bwipeout' dirbuf
 endfunction
 
 function! s:suppress_netrw() abort
