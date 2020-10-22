@@ -8,7 +8,7 @@ function! s:hijack_directory() abort
   if !isdirectory(path)
     return
   endif
-  bwipeout .
+  bwipeout %
   execute printf('keepjumps keepalt Fern %s', fnameescape(path))
 endfunction
 
