@@ -8,8 +8,9 @@ function! s:hijack_directory() abort
   if !isdirectory(path)
     return
   endif
-  keepjumps keepalt bwipeout %
+  let bufnr = bufnr()
   execute printf('keepjumps keepalt Fern %s', fnameescape(path))
+  execute printf('bwipeout %d', bufnr)
 endfunction
 
 function! s:suppress_netrw() abort
