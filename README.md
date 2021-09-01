@@ -23,5 +23,5 @@ vim .
 
 ## License
 
-The code in fern-bookmark.vim follows MIT license texted in [LICENSE](./LICENSE).
+The code in fern-hijack.vim follows MIT license texted in [LICENSE](./LICENSE).
 Contributors need to agree that any modifications sent in this repository follow the license.
