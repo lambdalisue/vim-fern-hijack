@@ -10,7 +10,7 @@ function! s:hijack_directory() abort
   endif
   let bufnr = bufnr()
   execute printf('keepjumps keepalt Fern %s', fnameescape(path))
-  execute printf('bwipeout %d', bufnr)
+  execute printf('silent! bwipeout %d', bufnr)
 endfunction
 
 function! s:suppress_netrw() abort
