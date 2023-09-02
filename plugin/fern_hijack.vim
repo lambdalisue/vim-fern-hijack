@@ -21,10 +21,12 @@ endfunction
 
 function! s:expand(expr) abort
   try
-    return fern#util#expand(a:expr)
+    if exists('g:loaded_fern')
+      return fern#util#expand(a:expr)
+    endif
   catch /^Vim\%((\a\+)\)\=:E117:/
-    return expand(a:expr)
   endtry
+  return expand(a:expr)
 endfunction
 
 augroup fern-hijack
