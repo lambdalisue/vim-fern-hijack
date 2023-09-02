@@ -3,12 +3,13 @@ if exists('g:loaded_fern_hijack') || ( !has('nvim') && v:version < 801 )
 endif
 let g:loaded_fern_hijack = 1
 
-function! s:hijack_directory(path) abort
-  if !isdirectory(a:path)
+function! s:hijack_directory() abort
+  let path = s:expand('%:p')
+  if !isdirectory(path)
     return
   endif
   let bufnr = bufnr()
-  execute printf('keepjumps keepalt Fern %s', fnameescape(a:path))
+  execute printf('keepjumps keepalt Fern %s', fnameescape(path))
   execute printf('silent! bwipeout %d', bufnr)
 endfunction
 
@@ -26,13 +27,8 @@ function! s:expand(expr) abort
   endtry
 endfunction
 
-function! s:initial_hijack() abort
-	call s:hijack_directory(expand('%:p'))
-	autocmd fern-hijack BufEnter * ++nested call s:hijack_directory(s:expand('%:p'))
-endfunction
-
 augroup fern-hijack
   autocmd!
   autocmd VimEnter * call s:suppress_netrw()
-  autocmd BufEnter * ++once ++nested call s:initial_hijack()
+  autocmd BufEnter * ++nested call s:hijack_directory()
 augroup END
