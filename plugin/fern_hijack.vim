@@ -20,12 +20,9 @@ function! s:suppress_netrw() abort
 endfunction
 
 function! s:expand(expr) abort
-  try
-    if exists('g:loaded_fern')
-      return fern#util#expand(a:expr)
-    endif
-  catch /^Vim\%((\a\+)\)\=:E117:/
-  endtry
+  if exists('fern#util#expand')
+    return fern#util#expand(a:expr)
+  endif
   return expand(a:expr)
 endfunction
 
