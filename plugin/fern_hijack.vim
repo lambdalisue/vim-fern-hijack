@@ -19,6 +19,7 @@ function! s:suppress_netrw() abort
   endif
 endfunction
 
+" Called every BufEnter, but checks if fern#util#expand exists, thus preventing unnecessary load of fern.vim.
 function! s:expand(expr) abort
   if exists('fern#util#expand')
     return fern#util#expand(a:expr)
