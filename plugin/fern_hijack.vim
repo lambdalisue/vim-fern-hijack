@@ -19,12 +19,12 @@ function! s:suppress_netrw() abort
   endif
 endfunction
 
+" Called every BufEnter, but checks if fern#util#expand exists, thus preventing unnecessary load of fern.vim.
 function! s:expand(expr) abort
-  try
+  if exists('fern#util#expand')
     return fern#util#expand(a:expr)
-  catch /^Vim\%((\a\+)\)\=:E117:/
-    return expand(a:expr)
-  endtry
+  endif
+  return expand(a:expr)
 endfunction
 
 augroup fern-hijack
